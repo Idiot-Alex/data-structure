@@ -3,6 +3,7 @@ package com.hotstrip.data.structure.common;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.LinkedList;
+import java.util.Stack;
 
 @Slf4j
 public class BinaryTree {
@@ -64,4 +65,71 @@ public class BinaryTree {
         postOrderTreeNode(node.getRight());
         log.info("{}", node.getData());
     }
+
+    /**
+     * use stack
+     */
+
+    /**
+     * pre order
+     * @param node
+     */
+    public static void preOrderTreeNodeWithStack(TreeNode node) {
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        while (node != null || !stack.isEmpty()) {
+            while (node != null) {
+                log.info("{}", node.getData());
+                stack.push(node);
+                node = node.getLeft();
+            }
+
+            if (!stack.isEmpty()) {
+                node = stack.pop();
+                node = node.getRight();
+            }
+        }
+    }
+
+    /**
+     * in order
+     * @param node
+     */
+    public static void inOrderTreeNodeWithStack(TreeNode node) {
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        while (node != null || !stack.isEmpty()) {
+            while (node != null) {
+                stack.push(node);
+                node = node.getLeft();
+            }
+
+            if (!stack.isEmpty()) {
+                node = stack.pop();
+                log.info("{}", node.getData());
+                node = node.getRight();
+            }
+        }
+    }
+
+    /**
+     * post order
+     * @param node
+     */
+    public static void postOrderTreeNodeWithStack(TreeNode node) {
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        while (node != null || !stack.isEmpty()) {
+            while (node != null) {
+                stack.push(node);
+                log.info("{}", node.getData());
+                node = node.getLeft();
+            }
+
+            if (!stack.isEmpty()) {
+                node = stack.pop();
+                log.info("{}", node.getData());
+                node = node.getRight();
+            }
+
+        }
+    }
+
 }

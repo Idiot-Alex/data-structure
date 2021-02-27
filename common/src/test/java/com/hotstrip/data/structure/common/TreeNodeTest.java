@@ -16,13 +16,31 @@ public class TreeNodeTest extends TestCase {
         TreeNode treeNode = BinaryTree.createBinaryTree(list);
 
         // 前序遍历
-        log.info("前序遍历...");
+        log.info("pre order...");
         BinaryTree.preOrderTreeNode(treeNode);
         // 中序遍历
-        log.info("中序遍历...");
+        log.info("in order...");
         BinaryTree.inOrderTreeNode(treeNode);
         // 后序遍历
-        log.info("后序遍历...");
+        log.info("post order...");
         BinaryTree.postOrderTreeNode(treeNode);
+    }
+
+    @Test
+    public void test2() {
+        LinkedList<Integer> list = new LinkedList<Integer>(Arrays.asList(new Integer[]{3, 2, 9, null, null, 10, null, null, 8, null, 4}));
+        TreeNode treeNode = BinaryTree.createBinaryTree(list);
+
+        // 前序遍历
+        log.info("pre order...");
+        BinaryTree.preOrderTreeNodeWithStack(treeNode);
+
+        // 中序遍历
+        log.info("in order...");
+        BinaryTree.inOrderTreeNodeWithStack(treeNode);
+
+        // 后序遍历
+        log.info("post order...");
+        BinaryTree.postOrderTreeNodeWithStack(treeNode);
     }
 }
