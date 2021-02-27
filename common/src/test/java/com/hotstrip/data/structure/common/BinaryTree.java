@@ -3,6 +3,7 @@ package com.hotstrip.data.structure.common;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 @Slf4j
@@ -112,23 +113,42 @@ public class BinaryTree {
 
     /**
      * post order
+     * this does not complete
      * @param node
      */
     public static void postOrderTreeNodeWithStack(TreeNode node) {
-        Stack<TreeNode> stack = new Stack<TreeNode>();
-        while (node != null || !stack.isEmpty()) {
-            while (node != null) {
-                stack.push(node);
-                log.info("{}", node.getData());
-                node = node.getLeft();
-            }
+//        Stack<TreeNode> stack = new Stack<TreeNode>();
+//        while (node != null || !stack.isEmpty()) {
+//            while (node != null) {
+//                stack.push(node);
+//                log.info("{}", node.getData());
+//                node = node.getLeft();
+//            }
+//
+//            if (!stack.isEmpty()) {
+//                node = stack.pop();
+//                log.info("{}", node.getData());
+//                node = node.getRight();
+//            }
+//
+//        }
+    }
 
-            if (!stack.isEmpty()) {
-                node = stack.pop();
-                log.info("{}", node.getData());
-                node = node.getRight();
+    /**
+     * level order
+     */
+    public static void levelOrderTreeNode(TreeNode node) {
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.offer(node);
+        while (!queue.isEmpty()) {
+            TreeNode tempNode = queue.poll();
+            log.info("{}", tempNode.getData());
+            if (tempNode.getLeft() != null) {
+                queue.offer(tempNode.getLeft());
             }
-
+            if (tempNode.getRight() != null) {
+                queue.offer(tempNode.getRight());
+            }
         }
     }
 

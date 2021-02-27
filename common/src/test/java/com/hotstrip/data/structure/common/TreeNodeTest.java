@@ -42,5 +42,9 @@ public class TreeNodeTest extends TestCase {
         // 后序遍历
         log.info("post order...");
         BinaryTree.postOrderTreeNodeWithStack(treeNode);
+
+        // 层序遍历
+        log.info("level order");
+        BinaryTree.levelOrderTreeNode(treeNode);
     }
 }
