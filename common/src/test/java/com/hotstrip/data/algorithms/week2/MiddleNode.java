@@ -94,9 +94,9 @@ public class MiddleNode {
     public ListNode middleNode2(ListNode head) {
         ListNode fast = head;
         ListNode slow = head;
-        while (fast != null && fast.next != null) {
-            fast = fast.next.next;
+        while (fast.next != null && fast.next.next != null) {
             slow = slow.next;
+            fast = fast.next.next;
         }
         return slow;
     }
