@@ -30,11 +30,43 @@ public class OddEvenList {
 
     @Test
     public void test() {
-
+        ListNode l1 = ListNode.initListNode(new int[] {1, 2, 3, 4, 5});
+        ListNode listNode = oddEvenList(l1);
+        ListNode.print(listNode);
+        log.info(".......................");
     }
 
     public ListNode oddEvenList(ListNode head) {
-        // 双指针
-        return null;
+        if (head == null) {
+            return null;
+        }
+        // 分奇偶链表
+        ListNode oddHead = new ListNode();
+        ListNode evenHead = new ListNode();
+        ListNode oddTail = oddHead;
+        ListNode evenTail = evenHead;
+
+        ListNode p = head;
+
+        int index = 1;
+        while (p != null) {
+            ListNode temp = p.next;
+            // 奇数链表
+            if (index % 2 == 1) {
+                p.next = null;
+                oddTail.next = p;
+                oddTail = p;
+            } else {
+                // 偶数链表
+                p.next = null;
+                evenTail.next = p;
+                evenTail = p;
+            }
+            index++;
+            p = temp;
+        }
+
+        oddTail.next = evenHead.next;
+        return oddHead.next;
     }
 }
