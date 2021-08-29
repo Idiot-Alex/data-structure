@@ -71,7 +71,39 @@ public class GetIntersectionNode {
     }
 
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        // 先遍历链表得到长度
+        int lengthA = getLength(headA);
+        int lengthB = getLength(headB);
 
-        return null;
+        ListNode a = headA;
+        ListNode b = headB;
+        // 然后判断哪个长，长的链表先走 n 步
+        if (lengthA > lengthB) {
+            for (int i = 0; i < lengthA - lengthB; i++) {
+                a = a.next;
+            }
+        } else {
+            for (int i = 0; i < lengthB - lengthA; i++) {
+                b = b.next;
+            }
+        }
+
+        // 最后两个链表一起走，判断指针是否相等，相等的时候就是相交的节点
+        while (a != b) {
+            a = a.next;
+            b = b.next;
+        }
+        return a;
+    }
+
+    private int getLength(ListNode head) {
+        ListNode p = head;
+
+        int count = 0;
+        while (p != null) {
+            count++;
+            p = p.next;
+        }
+        return count;
     }
 }
